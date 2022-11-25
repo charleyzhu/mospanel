@@ -1,0 +1,79 @@
+<!--
+ * @Author: Charley
+ * @Date: 2022-11-25 14:05:42
+ * @LastEditors: Charley
+ * @LastEditTime: 2022-11-25 14:32:26
+ * @FilePath: /mospanel/web/html/pages/test.html
+ * @Description: In User Settings Edit
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/browse/ant-design-vue@3.2.15/dist/antd.min.css">
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/browse/ant-design-vue@3.2.15/dist/antd.min.js"></script>
+
+    <script src="https://unpkg.com/dayjs/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/customParseFormat.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekday.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/localeData.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekOfYear.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekYear.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/advancedFormat.js"></script> -->
+    <link rel="stylesheet" href="/assets/ant-design-vue@3.2.14/antd.css">
+    {{ template "js" . }}
+    
+</head>
+<body>
+    <a-layout id="app" v-cloak>
+        <a-layout-conten>
+            <a-row type="flex" justify="center">
+                <a-col :span="8">
+                    <a-card title="登录">
+                        <a-form :form="form" :label-col="{span: 4}" :wrapper-col="{span: 20}" @submit="handleSubmit">
+                            <a-form-item label="用户名">
+                                <a-input v-model="form.username" placeholder="请输入用户名"></a-input>
+                            </a-form-item>
+                            <a-form-item label="密码">
+                                <a-input v-model="form.password" placeholder="请输入密码"></a-input>
+                            </a-form-item>
+                            <a-form-item>
+                                <a-button type="primary" html-type="submit">登录</a-button>
+                            </a-form-item>
+                        </a-form>
+                    </a-card>
+                </a-col>
+            </a-row>
+        </a-layout-conten>
+    </a-layout>
+    
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+            data() {
+                return {
+                    form: {
+                        username: '',
+                        password: ''
+                    }
+                }
+            },
+            methods: {
+                handleSubmit(e) {
+                    e.preventDefault();
+                    this.$message.success('登录成功');
+                }
+            }
+        })
+        .use(antd)
+        .mount('#app')
+      </script>
+</body>
+</html>

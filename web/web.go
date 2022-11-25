@@ -2,7 +2,7 @@
  * @Author: Charley
  * @Date: 2022-11-04 16:34:47
  * @LastEditors: Charley
- * @LastEditTime: 2022-11-05 17:37:12
+ * @LastEditTime: 2022-11-08 17:46:41
  * @FilePath: /mospanel/web/web.go
  * @Description: In User Settings Edit
  */
@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"html/template"
 	"io/fs"
+	"mime"
 	"net/http"
 	"time"
 
@@ -84,8 +85,9 @@ func (w *WebServer) Run() error {
 }
 
 func (w *WebServer) initRouter() *gin.Engine {
+	mime.AddExtensionType(".map", "text/plain")
 	r := gin.Default()
-	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(htmlFS, "html/*")))
+	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(htmlFS, "html/**/*")))
 	r.StaticFS("assets", http.FS(&wrapAssetsFS{FS: assetsFS}))
 
 	r.Use(gsession.Sessions("session", sessions.NewSessionStore(w.cfg.SessionSecret)))
